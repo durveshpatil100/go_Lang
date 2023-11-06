@@ -1,0 +1,153 @@
+package main
+
+import "fmt"
+
+func main() {
+	var person1 struct {
+		name     string
+		age      int
+		location string
+	}
+
+	person1.name = "krisna"
+	person1.age = 50
+	person1.location = "pune"
+
+	fmt.Printf("person1 = %+v\n", person1)
+
+----------------------------------------------------------
+
+type Person struct {
+		name     string
+		age      int
+		location string
+	}
+
+	var p1 Person
+
+	p1.name = "krisna"
+	p1.age = 50
+	p1.location = "pune"
+
+	fmt.Printf("person1 = %+v\n", p1)
+
+	p2 := Person{
+		name:     "rohit",
+		age:      45,
+		location: "pune",
+	}
+	fmt.Printf("p2 = %+v\n", p2)
+
+	var p3 = Person{"Vishal", 33, "Pune"}
+	fmt.Printf("p3 = %+v\n", p3)
+
+	var p4 = &Person{"Siddharth", 22, "Pune"}
+	fmt.Printf("p4 = %+v\n", *p4)
+
+	p6 := new(Person)
+
+	p6.name = "Gaurav"
+	p6.age = 22
+	p6.location = "pune"
+	fmt.Printf("p6 = %+v", *p6)
+
+------------------------------------------------------------------
+
+type Person struct {
+	name     string
+	age      int
+	location string
+}
+
+type Salary struct {
+	Basic, HRA, TA float64
+}
+
+type Employee struct {
+	PersonalInfo  Person
+	MonthlySalary []Salary
+}
+
+func main() {
+	var e2 Employee
+
+	p2 := Person{
+		name:     "Krsina",
+		age:      45,
+		location: "Pune",
+	}
+
+	JanuarySalary := Salary{
+		Basic: 10000,
+		HRA:   5000,
+		TA:    100,
+	}
+
+	FebruarySalary := Salary{
+		Basic: 30000,
+		HRA:   3000,
+		TA:    200,
+	}
+
+	e2.PersonalInfo = p2
+
+	e2.MonthlySalary = []Salary{JanuarySalary, FebruarySalary}
+
+	fmt.Printf("e2 = %+v\n", e2)
+
+-------------------------------------------------------------------
+
+type Person struct {
+	name     string
+	age      int
+	location string
+}
+
+type Salary struct {
+	Basic, HRA, TA float64
+}
+
+type Employee struct {
+	PersonalInfo  Person
+	MonthlySalary []Salary
+}
+
+func main() {
+
+	e1 := Employee{
+		PersonalInfo: Person{
+			name:     "Rohit",
+			age:      12,
+			location: "Pune",
+		},
+
+		MonthlySalary: []Salary{
+
+			Salary{
+				Basic: 10000,
+				HRA:   125,
+				TA:    12,
+			},
+			Salary{
+				Basic: 1232,
+				HRA:   1245,
+				TA:    224,
+			},
+		},
+	}
+
+	fmt.Println(e1.MonthlySalary[1])
+	fmt.Printf("e1 = %+v\n", e1)
+
+	krishna := struct {
+		name     string
+		age      int
+		location string
+	}{
+		name:     "Krishna",
+		age:      12,
+		location: "Pune",
+	}
+	fmt.Printf("Krishna = %+v\n", krishna)
+
+}
